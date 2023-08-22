@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guess the number</title>
+    
+    <script>
+        let guesses;
+        let reset;
+        let numbers;
+        let x = Math.floor(Math.random()*11);
+        function r(){
+            document.getElementById('uOrLOrT').innerHTML = ".........";
+            x = Math.floor(Math.random()*numbers+1);
+            guesses = reset;
+            document.getElementById('guessesN').innerHTML = guesses;
+            document.getElementById('number').innerHTML = "?";
+            document.getElementById('lN').innerHTML = numbers;
+        }
+        function choose(){
+            guesses=10;
+            reset = guesses;
+            numbers = 10;
+            document.getElementById('guessesN').innerHTML = guesses;
+            document.getElementById('number').innerHTML = "?";
+            document.getElementById('fOption').style.display = "block";
+            document.getElementById('sOption').style.display = "none";
+            document.getElementById('lN').innerHTML = numbers;
+        }
+        function easy(){
+            guesses=10;
+            reset = guesses;
+            numbers = 10;
+            document.getElementById('guessesN').innerHTML = guesses;
+            document.getElementById('uOrLOrT').innerHTML = ".........";
+            x = Math.floor(Math.random()*numbers+1);
+            document.getElementById('number').innerHTML = "?";
+            document.getElementById('lN').innerHTML = numbers;
+        }
+        function normal(){
+            guesses = 5;
+            reset = guesses;
+            numbers = 10;
+            document.getElementById('guessesN').innerHTML = guesses;
+            document.getElementById('uOrLOrT').innerHTML = ".........";
+            x = Math.floor(Math.random()*numbers+1);
+            document.getElementById('number').innerHTML = "?";
+            document.getElementById('lN').innerHTML = numbers;
+        }
+        function hard(){
+            guesses = 3;
+            reset = guesses;
+            numbers = 10;
+            document.getElementById('guessesN').innerHTML = guesses;
+            document.getElementById('uOrLOrT').innerHTML = ".........";
+            x = Math.floor(Math.random()*numbers+1);
+            document.getElementById('number').innerHTML = "?";
+            document.getElementById('lN').innerHTML = numbers;
+        }
+        function custom(){
+            document.getElementById('fOption').style.display = "none";
+            document.getElementById('sOption').style.display = "block";
+        }
+        function confirm(){
+            numbers = document.forms['customForm']['to'].value;
+            x = Math.floor(Math.random()* numbers+1);
+            guesses = document.forms['customForm']['guessesCustom'].value
+            reset = guesses;
+            document.getElementById('guessesN').innerHTML = guesses;
+            document.getElementById('uOrLOrT').innerHTML = ".........";
+            document.getElementById('number').innerHTML = "?";
+
+            document.getElementById('sOption').style.display = "none";
+            document.getElementById('fOption').style.display = "block";
+            document.getElementById('lN').innerHTML = numbers;
+        }
+        function cancel(){
+            document.getElementById('sOption').style.display = "none";
+            document.getElementById('fOption').style.display = "block";
+        }
+
+        function check(){
+            if(guesses>0){
+                    if (document.forms['guessForm']['guess'].value == x){
+                        document.getElementById('uOrLOrT').innerHTML = "";
+                        document.getElementById('uOrLOrT').innerHTML = "Good !!";
+                        document.getElementById('number').innerHTML = x;
+                    }
+                    if (document.forms['guessForm']['guess'].value > x){
+                        document.getElementById('uOrLOrT').innerHTML = "";
+                        document.getElementById('uOrLOrT').innerHTML = "NO !! Lower";
+                        guesses = guesses-1;
+                        document.getElementById('guessesN').innerHTML = guesses;
+                    }
+                    if (document.forms['guessForm']['guess'].value < x){
+                        document.getElementById('uOrLOrT').innerHTML = "";
+                        document.getElementById('uOrLOrT').innerHTML = "NO !! Upper";
+                        guesses = guesses-1;
+                        document.getElementById('guessesN').innerHTML = guesses;
+                    }
+            }else{
+                document.getElementById('uOrLOrT').innerHTML = "Game Over";
+                document.getElementById('number').innerHTML = x;
+            }
+
+        }
+
+
+    </script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+    
+    <link rel="stylesheet" href="style.css">
+</head>
+<body onload="choose()">
+    <h3 class="tips">Guess a number from <span id="fN">0</span> To <span id="lN">10</span></h3>
+    <div class="ui">
+        <span class="guesses" id="guessesN"></span>
+        <span class="material-symbols-outlined heart_plus wiggle">
+            heart_plus
+        </span>
+    </div>
+
+    <form name="guessForm">
+        <div class="center">
+        <input placeholder="Input your number..." name="guess" type="text" class="input">
+        <button class="ui-btn" onclick="check()" type="button">
+            <span>
+              Guess 
+            </span>
+        </button>
+        <button class="ui-btn" onclick="r()" type="button">
+            <span>
+                reset
+            </span>
+        </button>
+        </div>
+
+    </form>
+
+    <div class="flip-card">
+        <div class="flip-card-inner">
+            <div class="flip-card-front">
+                <p class="title" id="uOrLOrT">.........</p>
+                <p><span>The Number Is :</span><span id="number">?</span></p>
+                <br>
+                <p style="font-size: 10px">hover To see options</p>
+            </div>
+            <div class="flip-card-back" >
+                
+                <div id="fOption">
+                    <p class="title2">Options</p>
+                    <div class="option">
+                        <p class="opTexte">Easy</p>
+                        <div class="radio-input">
+                            <input type="radio" id="value-1" name="value-radio" onclick="easy()"  checked>
+                            <div class="circle">
+                            </div> 
+                        </div>
+                    </div>
+
+                    <div class="option">
+                        <p class="opTexte">Normal</p>
+                        <div class="radio-input">
+                            <input type="radio" id="value-2" name="value-radio" onclick="normal()">
+                            <div class="circle">
+                            </div> 
+                        </div>
+                    </div>
+
+                    <div class="option">
+                        <p class="opTexte">Hard</p>
+                        <div class="radio-input">
+                            <input type="radio" id="value-3" name="value-radio" onclick="hard()">
+                            <div class="circle">
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="option">
+                        <p class="opTexte">Custom</p>
+                        <div class="radio-input">
+                            <input type="radio" id="value-4" name="value-radio" onclick="custom()">
+                            <div class="circle">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="sOption">
+                    <p class="title2">Custom</p>
+
+                    <form name="customForm">
+                        <h3>Number</h3>
+                        <span>From 0 To</span><input type="number" name="to" class="input2" placeholder="10" min="1">
+
+                        <h3>Guesses</h3>
+                        <input type="number" name="guessesCustom" class="input2" placeholder="0" min="1">
+                        <br>
+                        <button class="ui-btn" onclick="confirm()" type="button">
+                                <span>
+                                    Confirm
+                                </span>
+                        </button>
+
+                        <button class="ui-btn" onclick="cancel()" type="button">
+                            <span>
+                                Cancel
+                            </span>
+                        </button>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</body>
+</html>

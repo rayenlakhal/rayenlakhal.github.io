@@ -1,0 +1,411 @@
+body{
+    background-color: #212121;
+}
+.input {
+    display: block;
+    border-radius: 10px;
+    outline: 2px solid #FAC921;
+    border: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    background: none;
+    outline-offset: 3px;
+    padding: 10px 1rem;
+    transition: 0.25s;
+    text-align: center;
+    color: white;
+  }
+  
+  .input:focus {
+    outline-offset: 5px;
+    background-color: rgb(51, 51, 51)
+  }
+.center{
+    width: fit-content;
+    margin: 0 auto;
+    align-items: center;
+    justify-items: center;
+    text-align: center;
+}
+.ui-btn {
+    --btn-default-bg: rgb(41, 41, 41);
+    --btn-padding: 15px 20px;
+    --btn-hover-bg: rgb(51, 51, 51);
+    --btn-transition: .3s;
+    --btn-letter-spacing: .1rem;
+    --btn-animation-duration: 1.2s;
+    --btn-shadow-color: rgba(0, 0, 0, 0.137);
+    --btn-shadow: 0 2px 10px 0 var(--btn-shadow-color);
+    --hover-btn-color: #FAC921;
+    --default-btn-color: #fff;
+    --font-size: 16px;
+    /* 👆 this field should not be empty */
+    --font-weight: 600;
+    --font-family: Menlo,Roboto Mono,monospace;
+    /* 👆 this field should not be empty */
+  }
+  
+  /* button settings 👆 */
+  
+  .ui-btn {
+    box-sizing: border-box;
+    padding: var(--btn-padding);
+    display: inline-block;
+    align-items: center;
+    justify-content: center;
+    color: var(--default-btn-color);
+    font: var(--font-weight) var(--font-size) var(--font-family);
+    background: var(--btn-default-bg);
+    border: none;
+    cursor: pointer;
+    transition: var(--btn-transition);
+    overflow: hidden;
+    box-shadow: var(--btn-shadow);
+    margin: 30px auto;
+  }
+  
+  .ui-btn span {
+    letter-spacing: var(--btn-letter-spacing);
+    transition: var(--btn-transition);
+    box-sizing: border-box;
+    position: relative;
+    background: inherit;
+  }
+  
+  .ui-btn span::before {
+    box-sizing: border-box;
+    position: absolute;
+    content: "";
+    background: inherit;
+  }
+  
+  .ui-btn:hover, .ui-btn:focus {
+    background: var(--btn-hover-bg);
+  }
+  
+  .ui-btn:hover span, .ui-btn:focus span {
+    color: var(--hover-btn-color);
+  }
+  
+  .ui-btn:hover span::before, .ui-btn:focus span::before {
+    animation: chitchat linear both var(--btn-animation-duration);
+  }
+  
+  @keyframes chitchat {
+    0% {
+      content: "#";
+    }
+  
+    5% {
+      content: ".";
+    }
+  
+    10% {
+      content: "^{";
+    }
+  
+    15% {
+      content: "-!";
+    }
+  
+    20% {
+      content: "#$_";
+    }
+  
+    25% {
+      content: "№:0";
+    }
+  
+    30% {
+      content: "#{+.";
+    }
+  
+    35% {
+      content: "@}-?";
+    }
+  
+    40% {
+      content: "?{4@%";
+    }
+  
+    45% {
+      content: "=.,^!";
+    }
+  
+    50% {
+      content: "?2@%";
+    }
+  
+    55% {
+      content: "\;1}]";
+    }
+  
+    60% {
+      content: "?{%:%";
+      right: 0;
+    }
+  
+    65% {
+      content: "|{f[4";
+      right: 0;
+    }
+  
+    70% {
+      content: "{4%0%";
+      right: 0;
+    }
+  
+    75% {
+      content: "'1_0<";
+      right: 0;
+    }
+  
+    80% {
+      content: "{0%";
+      right: 0;
+    }
+  
+    85% {
+      content: "]>'";
+      right: 0;
+    }
+  
+    90% {
+      content: "4";
+      right: 0;
+    }
+  
+    95% {
+      content: "2";
+      right: 0;
+    }
+  
+    100% {
+      content: "";
+      right: 0;
+    }
+  }
+
+  .flip-card {
+    background-color: transparent;
+    width: 285px;
+    height: 381px;
+    perspective: 1000px;
+    font-family: sans-serif;
+    margin: 0 auto;
+    font-size: larger;
+  }
+  
+  .title {
+    font-size: 1.5em;
+    font-weight: 900;
+    text-align: center;
+  }
+  
+  .flip-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+  }
+  
+  .flip-card:hover .flip-card-inner {
+    transform: rotateY(180deg);
+  }
+  
+  .flip-card-front, .flip-card-back {
+    box-shadow: 0 8px 14px 0 rgba(0,0,0,0.2);
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    border: 1px solid #FAC921;
+    border-radius: 1rem;
+  }
+  
+  .flip-card-front {
+    background: linear-gradient(120deg, rgb(41, 41, 41) 60%, rgb(65, 65, 65) 88%,
+    rgb(51, 51, 51) 40%, #FAC921 48%);
+    color: white;
+    
+  }
+  
+  .flip-card-back {
+    background: linear-gradient(120deg, rgb(51, 51, 51) 30%, rgb(65, 65, 65) 88%,
+    rgb(41, 41, 41) 40%, #FAC921 78%);
+    color: white;
+    transform: rotateY(180deg);
+    justify-content: flex-start;
+  }
+  .title2{
+    font-size: 1.5em;
+    font-weight: 900;
+    text-align: center;
+    margin: 10px auto;
+  }
+
+  .radio-input {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .option{
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    line-height: 0em;
+    width: fit-content;
+    margin: 30px auto;
+  }
+  .opTexte{
+    display: inlines;
+    float: left;
+    margin-right: 50px;
+  }
+  
+  .radio-input input {
+    appearance: none;
+    width: 2em;
+    height: 2em;
+    background-color: #171717;
+    box-shadow: inset 2px 5px 10px rgb(5, 5, 5);
+    border-radius: 50%;
+    transition: .4s ease-in-out;
+  }
+  
+  .radio-input input:hover {
+    scale: 1.2;
+    cursor: pointer;
+    box-shadow: none;
+  }
+  
+  .radio-input .circle {
+    position: relative;
+    top: 0.01em;
+    left: -1.1em;
+    width: 0.6em;
+    height: 0.6em;
+    background-color: yellow;
+    scale: 0;
+    border-radius: 10px;
+    transition: .4s ease-in-out;
+  }
+  
+  .radio-input input:checked {
+    box-shadow: none;
+    border: 1px solid yellow;
+  }
+  
+  .radio-input input:checked + .circle {
+    transform: rotate(360deg);
+    scale: 1;
+  }
+.ui{
+  width: fit-content;
+  height: fit-content;
+  padding: 10px;
+  padding-left: 30px;
+  padding-right: 30px;
+  margin: 20px;
+  margin-bottom: 0px;
+  border: 5px dashed #FAC921;
+  justify-content: center;
+  align-items: center;
+}
+.heart_plus{
+  color: white;
+  font-size: 50px;
+  margin-left: 10px;
+}  
+.guesses{
+  font-size: 50px;
+  color: white;
+  font-family: sans-serif;
+}
+.tip{
+  color: white;
+}
+
+.wiggle {
+  animation: wiggle 2s linear infinite;
+}
+
+@keyframes wiggle {
+  0%, 7% {
+    transform: rotateZ(0);
+  }
+  15% {
+    transform: rotateZ(-15deg);
+  }
+  20% {
+    transform: rotateZ(10deg);
+  }
+  25% {
+    transform: rotateZ(-10deg);
+  }
+  30% {
+    transform: rotateZ(6deg);
+  }
+  35% {
+    transform: rotateZ(-4deg);
+  }
+  40%, 100% {
+    transform: rotateZ(0);
+  }
+}
+
+.tips{
+  display: inline;
+  text-align: center;
+  color: white;
+  font-family: sans-serif;
+}
+
+.input2 {
+  font-family: -apple-system,BlinkMacSystemFont,"Segoe UI","Roboto","Oxygen","Ubuntu","Cantarell","Fira Sans","Droid Sans","Helvetica Neue",sans-serif;
+  font-weight: 500;
+  font-size: .8vw;
+  color: #fff;
+  background-color: rgb(28,28,30);
+  box-shadow: 0 0 .4vw rgba(0,0,0,0.5), 0 0 0 .15vw transparent;
+  border-radius: 0.4vw;
+  border: none;
+  outline: none;
+  padding: 0.4vw;
+  max-width: 190px;
+  transition: .4s;
+  width: 40px;
+  margin: 2px 10px;
+}
+
+.input2:hover {
+  box-shadow: 0 0 0 .15vw rgba(135, 207, 235, 0.186);
+}
+
+.input2:focus {
+  box-shadow: 0 0 0 .15vw skyblue;
+}
+
+.close{
+  color: white;
+  font-size: 20px;
+  font-weight: bold;
+  margin-top: 10pxs ;
+
+}
+.closeBtn{
+  background: none;
+  border: none;
+  width: fit-content;
+  height: fit-content;
+  margin-top: 10px;
+}
+.closeBtn:hover{
+  background: red;
+}
