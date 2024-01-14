@@ -1,0 +1,113 @@
+*{
+    font-family: sans-serif;
+}
+body{
+    background-color: #f2f2f2;
+}
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 80px 0;
+  }
+  
+  .custom-radio {
+    display: flex;
+    flex-direction: column;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+  }
+  
+  .custom-radio input[type="radio"] {
+    display: none;
+  }
+  
+  .radio-label {
+    display: flex;
+    align-items: center;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+  }
+  
+  .radio-circle {
+    width: 20px;
+    height: 20px;
+    border: 2px solid #ffcc00;
+    border-radius: 50%;
+    margin-right: 10px;
+    transition: border-color 0.3s ease-in-out, background-color 0.3s ease-in-out;
+  }
+  
+  .radio-text {
+    font-size: 1rem;
+    color: #333;
+    transition: color 0.3s ease-in-out;
+  }
+  
+  .custom-radio input[type="radio"]:checked + .radio-label {
+    background-color: #ffcc00;
+  }
+  
+  .custom-radio input[type="radio"]:checked + .radio-label .radio-circle {
+    border-color: #fff;
+    background-color: #ffcc00;
+  }
+  
+  .custom-radio input[type="radio"]:checked + .radio-label .radio-text {
+    color: #64748b;
+  }
+
+  .input-wrapper input {
+    background-color: #fff;
+    border: none;
+    padding: 1rem;
+    font-size: 1rem;
+    width: 13em;
+    border-radius: 1rem;
+    color: #ffcc00;
+    box-shadow: 0 0.4rem #dfd9d9;
+    cursor: pointer;
+    margin: 20px;
+  }
+  
+  .input-wrapper input:focus {
+    outline-color: #ffcc00;
+  }
+
+  .controll{
+      display: flex;
+      flex-direction: column;
+  }
+  button {
+    padding: 12.5px 30px;
+    border: 0;
+    border-radius: 100px;
+    background-color: #ffcc00;
+    color: #ffffff;
+    font-weight: Bold;
+    transition: all 0.5s;
+    -webkit-transition: all 0.5s;
+    width: 50%;
+    margin: 0 auto;
+  }
+  
+  button:hover {
+    box-shadow: 0 0 20px #6fc5ff50;
+    transform: scale(1.1);
+  }
+  
+  button:active {
+    background-color: #ffde59;
+    transition: all 0.25s;
+    -webkit-transition: all 0.25s;
+    box-shadow: none;
+    transform: scale(0.98);
+  }
+
+  .answer{
+      text-align: center;
+  }
+  

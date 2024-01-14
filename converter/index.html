@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Calculatrice de conversion</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+
+        <div class="custom-radio">
+          <input type="radio" id="radio-1" name="tabs" checked="" onclick="radio1ch()">
+          <label class="radio-label" for="radio-1">
+            <div class="radio-circle"></div>
+            <span class="radio-text">Binaire en Décimal</span>
+          </label>
+          <input type="radio" id="radio-2" name="tabs" onclick="radio2ch()">
+          <label class="radio-label" for="radio-2">
+            <div class="radio-circle"></div>
+            <span class="radio-text">Décimal en Binaire</span>
+          </label>
+          <input type="radio" id="radio-3" name="tabs" onclick="radio3ch()">
+          <label class="radio-label" for="radio-3">
+            <div class="radio-circle"></div>
+            <span class="radio-text">Octal en Décimal</span>
+          </label>
+
+          <input type="radio" id="radio-4" name="tabs" onclick="radio4ch()">
+          <label class="radio-label" for="radio-4">
+            <div class="radio-circle"></div>
+            <span class="radio-text">Décimal en Octal</span>
+          </label>
+
+          <input type="radio" id="radio-5" name="tabs" onclick="radio5ch()">
+          <label class="radio-label" for="radio-5">
+            <div class="radio-circle"></div>
+            <span class="radio-text">Hexadécimal en Décimal </span>
+          </label>
+
+          <input type="radio" id="radio-6" name="tabs" onclick="radio6ch()">
+          <label class="radio-label" for="radio-6">
+            <div class="radio-circle"></div>
+            <span class="radio-text">Décimal en Hexadécimal</span>
+          </label>
+          
+        </div>
+
+        <div class="controll">
+            <div class="input-wrapper" >
+                <input type="text" placeholder="Type here..." name="text" class="input" id="number">
+            </div>
+            <button onclick="start()">
+                Converser
+            </button>
+        </div>
+        
+    </div>
+    <h1 class="answer" id="txt">???</h1>
+      
+      <script>
+        let radio1 = document.getElementById('radio-1');
+        let radio2 = document.getElementById('radio-2');
+        let radio3 = document.getElementById('radio-3');
+        let radio4 = document.getElementById('radio-4');
+        let radio5 = document.getElementById('radio-5');
+        let radio6 = document.getElementById('radio-6');
+        let number = document.getElementById('number');
+        let txt = document.getElementById('txt');
+        let choose = 1;
+        let result = 0;
+
+        function radio1ch(){
+            choose = 1;
+        }
+        function radio2ch(){
+            choose = 2;
+        }
+        function radio3ch(){
+            choose = 3;
+        }
+        function radio4ch(){
+            choose = 4;
+        }
+        function radio5ch(){
+            choose = 5;
+        }
+        function radio6ch(){
+            choose = 6;
+        }
+        function start(){
+            if(choose == 1){
+                let decimalNumber = 0;
+                let binaryNumber = number.value;
+                let power = 0;
+                for (let i = binaryNumber.length - 1; i >= 0; i--) {
+                    if (binaryNumber[i] == '1') {
+                        decimalNumber = decimalNumber + binaryNumber[i] * Math.pow(2, power);
+                    }
+                    power++;
+                    result = decimalNumber;
+                } 
+            }
+
+            if(choose == 2){
+                let binaryResult = "";
+                decimalNumber = number.value;
+                while (decimalNumber > 0) {
+                    // Get the remainder of the division by 2
+                    const remainder = decimalNumber % 2;
+                    
+                    // Prepend the remainder to the binary result
+                    binaryResult = remainder + binaryResult;
+                    
+                    // Update the decimal number by integer division by 2
+                    decimalNumber = Math.floor(decimalNumber / 2);
+                }
+                result = binaryResult;
+                // Handle the case when the input is 0
+                if (binaryResult === "") {
+                    result = "0";
+                }
+            }
+
+            if(choose == 3){
+                let decimalNumber = 0;
+                let octalNumber = number.value;
+                let power = 0;
+                for (let i = octalNumber.length - 1; i >= 0; i--) {
+                    decimalNumber = decimalNumber + octalNumber[i] * Math.pow(8, power);
+                    power++;
+                    
+                } 
+                result = decimalNumber;
+            }
+
+            if(choose == 4){
+                let octalResult = "";
+                decimalNumber = number.value;
+                while (decimalNumber > 0) {
+                    // Get the remainder of the division by 2
+                    const remainder = decimalNumber % 8;
+                    console.log(decimalNumber);
+                    // Prepend the remainder to the binary result
+                    octalResult = remainder + octalResult;
+                    
+                    // Update the decimal number by integer division by 2
+                    decimalNumber = Math.floor(decimalNumber / 8);
+                }
+                result = octalResult;
+                // Handle the case when the input is 0
+                if (octalResult === "") {
+                    result = "0";
+                }
+            }
+
+            if(choose == 5){
+                let hexNumber = number.value;
+
+                result = parseInt(hexNumber, 16);
+            }
+
+            if(choose == 6){
+                let hexResult = "";
+                decimalNumber = number.value;
+
+                while (decimalNumber > 0) {
+                    // Get the remainder of the division by 16
+                    const remainder = decimalNumber % 16;
+
+                    // Convert remainder to hexadecimal and prepend to the result
+                    hexResult = (remainder < 10 ? remainder : String.fromCharCode(55 + remainder)).toString() + hexResult;
+
+                    // Update the decimal number by integer division by 16
+                    decimalNumber = Math.floor(decimalNumber / 16);
+                }
+
+                // Handle the case when the input is 0
+                if (hexResult === "") {
+                    hexResult = "0";
+                }
+                result = hexResult;
+
+            }
+            
+            txt.innerHTML = result;
+        }
+      
+
+      
+      </script>
+</body>
+</html>
