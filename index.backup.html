@@ -1,0 +1,2594 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="description"
+    content="Rayen Lakhal — Media & Digital Communications, IT Student, Project & Event Management">
+  <meta name="theme-color" content="#08090d">
+  <meta property="og:title" content="Rayen Lakhal | Media & Digital Communications">
+  <meta property="og:description"
+    content="IT student, media professional and project leader combining technology, creativity and communication.">
+  <meta property="og:type" content="website">
+  <title>Rayen Lakhal | Media & Digital Communications</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
+
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem('theme');
+        if (!t) t = matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+        if (t === 'light') document.documentElement.classList.add('light');
+      } catch (e) { }
+    })();
+  </script>
+
+  <style>
+    :root {
+      --bg: #08090d;
+      --bg2: #0e1017;
+      --card: rgba(255, 255, 255, .055);
+      --card2: rgba(255, 255, 255, .085);
+      --text: #f5f7fb;
+      --muted: #a7adbb;
+      --line: rgba(255, 255, 255, .1);
+      --accent: #8b5cf6;
+      --accent2: #22d3ee;
+      --gold: #f5c76a;
+      --shadow: 0 25px 80px rgba(0, 0, 0, .35);
+      --nav-bg: rgba(8, 9, 13, .65);
+      --nav-bg-solid: rgba(8, 9, 13, .96);
+      --track: rgba(255, 255, 255, .08);
+      --num: rgba(255, 255, 255, .1);
+      --grad-text: linear-gradient(100deg, var(--text), #bda7ff 45%, #69e7f7);
+      --ease: cubic-bezier(.2, .7, .2, 1);
+      --nav-h: 76px;
+    }
+
+    :root.light {
+      --bg: #f4f5f8;
+      --bg2: #ffffff;
+      --card: rgba(0, 0, 0, .045);
+      --card2: rgba(0, 0, 0, .075);
+      --text: #10131a;
+      --muted: #5d6472;
+      --line: rgba(0, 0, 0, .1);
+      --shadow: 0 25px 80px rgba(20, 20, 50, .14);
+      --nav-bg: rgba(244, 245, 248, .72);
+      --nav-bg-solid: rgba(244, 245, 248, .98);
+      --track: rgba(0, 0, 0, .08);
+      --num: rgba(0, 0, 0, .09);
+      --accent2: #0891b2;
+      --grad-text: linear-gradient(100deg, #10131a, #7c3aed 50%, #0891b2);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0
+    }
+
+    html {
+      scroll-behavior: smooth;
+      -webkit-text-size-adjust: 100%
+    }
+
+    body {
+      background:
+        radial-gradient(circle at 80% 10%, rgba(139, 92, 246, .13), transparent 28rem),
+        radial-gradient(circle at 10% 50%, rgba(34, 211, 238, .08), transparent 30rem),
+        var(--bg);
+      background-attachment: fixed;
+      color: var(--text);
+      font-family: Inter, "Cairo", system-ui, sans-serif;
+      line-height: 1.6;
+      overflow-x: hidden;
+      transition: background-color .4s, color .4s;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    body.is-loading {
+      overflow: hidden
+    }
+
+    img {
+      max-width: 100%
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none
+    }
+
+    button {
+      font: inherit;
+      color: inherit
+    }
+
+    :focus-visible {
+      outline: 2px solid var(--accent2);
+      outline-offset: 3px;
+      border-radius: 8px
+    }
+
+    .container {
+      width: min(1120px, calc(100% - 40px));
+      margin: auto
+    }
+
+    section {
+      padding: 105px 0;
+      scroll-margin-top: calc(var(--nav-h) - 10px)
+    }
+
+    [dir="auto"],
+    .ar {
+      font-family: "Cairo", "Space Grotesk", sans-serif
+    }
+
+    .skip-link {
+      position: fixed;
+      left: 16px;
+      top: -60px;
+      background: var(--text);
+      color: var(--bg);
+      padding: 10px 16px;
+      border-radius: 999px;
+      z-index: 20000;
+      font-weight: 600;
+      transition: top .25s
+    }
+
+    .skip-link:focus {
+      top: 14px
+    }
+
+    /* Loader */
+    #loader {
+      position: fixed;
+      inset: 0;
+      z-index: 20000;
+      background: var(--bg);
+      display: grid;
+      place-items: center;
+      transition: opacity .6s var(--ease), visibility .6s
+    }
+
+    #loader.hide {
+      opacity: 0;
+      visibility: hidden
+    }
+
+    .loader-mark {
+      font-family: "Space Grotesk";
+      font-weight: 700;
+      font-size: 2rem;
+      letter-spacing: -.04em;
+      animation: pulse 1.2s ease-in-out infinite
+    }
+
+    .loader-mark span {
+      color: var(--accent2)
+    }
+
+    @keyframes pulse {
+
+      0%,
+      100% {
+        opacity: .35;
+        transform: scale(.96)
+      }
+
+      50% {
+        opacity: 1;
+        transform: scale(1)
+      }
+    }
+
+    /* Progress + cursor */
+    #progress {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 3px;
+      width: 100%;
+      z-index: 9999;
+      transform-origin: 0 50%;
+      transform: scaleX(0);
+      background: linear-gradient(90deg, var(--accent), var(--accent2))
+    }
+
+    #cursor {
+      position: fixed;
+      left: 0;
+      top: 0;
+      width: 18px;
+      height: 18px;
+      border: 1px solid rgba(255, 255, 255, .55);
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 10000;
+      opacity: 0;
+      transition: width .25s, height .25s, opacity .3s;
+      mix-blend-mode: difference;
+      will-change: transform;
+    }
+
+    #cursor.on {
+      opacity: 1
+    }
+
+    #cursor.big {
+      width: 34px;
+      height: 34px
+    }
+
+    @media(hover:none), (pointer:coarse) {
+      #cursor {
+        display: none
+      }
+    }
+
+    /* Ambient blobs */
+    .blob {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(70px);
+      opacity: .35;
+      pointer-events: none;
+      z-index: -1;
+      animation: float 14s ease-in-out infinite
+    }
+
+    .blob.b1 {
+      width: 340px;
+      height: 340px;
+      background: var(--accent);
+      top: 8%;
+      right: 6%
+    }
+
+    .blob.b2 {
+      width: 280px;
+      height: 280px;
+      background: var(--accent2);
+      bottom: 6%;
+      left: 2%;
+      animation-delay: -6s;
+      opacity: .2
+    }
+
+    :root.light .blob {
+      opacity: .18
+    }
+
+    @keyframes float {
+
+      0%,
+      100% {
+        transform: translate3d(0, 0, 0)
+      }
+
+      50% {
+        transform: translate3d(30px, -40px, 0)
+      }
+    }
+
+    /* Nav */
+    .nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      background: var(--nav-bg);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border-bottom: 1px solid transparent;
+      transition: border-color .3s, transform .4s var(--ease), background .3s;
+    }
+
+    .nav.scrolled {
+      border-color: var(--line)
+    }
+
+    .nav.hidden {
+      transform: translateY(-100%)
+    }
+
+    .nav-inner {
+      height: var(--nav-h);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px
+    }
+
+    .logo {
+      font-family: "Space Grotesk";
+      font-weight: 700;
+      font-size: 1.15rem;
+      letter-spacing: -.04em
+    }
+
+    .logo span {
+      color: var(--accent2)
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 24px;
+      align-items: center
+    }
+
+    .nav-links a {
+      position: relative;
+      font-size: .86rem;
+      color: var(--muted);
+      transition: color .25s;
+      padding: 6px 0
+    }
+
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      height: 2px;
+      border-radius: 2px;
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform .35s var(--ease)
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: var(--text)
+    }
+
+    .nav-links a.active::after,
+    .nav-links a:hover::after {
+      transform: scaleX(1)
+    }
+
+    .nav-actions {
+      display: flex;
+      gap: 8px
+    }
+
+    .icon-btn {
+      width: 40px;
+      height: 40px;
+      border: 1px solid var(--line);
+      border-radius: 50%;
+      background: var(--card);
+      cursor: pointer;
+      display: grid;
+      place-items: center;
+      transition: transform .25s, border-color .25s, background .25s;
+    }
+
+    .icon-btn:hover {
+      transform: translateY(-2px);
+      border-color: var(--accent2)
+    }
+
+    .menu-btn {
+      display: none
+    }
+
+    .burger {
+      width: 16px;
+      height: 12px;
+      position: relative
+    }
+
+    .burger i {
+      position: absolute;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: currentColor;
+      border-radius: 2px;
+      transition: transform .35s var(--ease), opacity .2s, top .35s var(--ease)
+    }
+
+    .burger i:nth-child(1) {
+      top: 0
+    }
+
+    .burger i:nth-child(2) {
+      top: 5px
+    }
+
+    .burger i:nth-child(3) {
+      top: 10px
+    }
+
+    .nav.open .burger i:nth-child(1) {
+      top: 5px;
+      transform: rotate(45deg)
+    }
+
+    .nav.open .burger i:nth-child(2) {
+      opacity: 0
+    }
+
+    .nav.open .burger i:nth-child(3) {
+      top: 5px;
+      transform: rotate(-45deg)
+    }
+
+    /* Hero */
+    .hero {
+      min-height: 100vh;
+      min-height: 100svh;
+      display: flex;
+      align-items: center;
+      padding: 120px 0 70px;
+      position: relative;
+      isolation: isolate
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.15fr .85fr;
+      gap: 70px;
+      align-items: center
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      color: var(--accent2);
+      font-size: .78rem;
+      text-transform: uppercase;
+      letter-spacing: .18em;
+      font-weight: 700;
+      margin-bottom: 20px;
+    }
+
+    .dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--accent2);
+      box-shadow: 0 0 18px var(--accent2);
+      animation: blink 2s ease-in-out infinite
+    }
+
+    @keyframes blink {
+      50% {
+        opacity: .35
+      }
+    }
+
+    h1 {
+      font-family: "Space Grotesk";
+      font-size: clamp(3rem, 7vw, 6.5rem);
+      line-height: .92;
+      letter-spacing: -.075em;
+      margin-bottom: 25px;
+    }
+
+    h1 .line {
+      display: block;
+      overflow: hidden;
+      padding-bottom: .08em
+    }
+
+    h1 .line>span {
+      display: inline-block;
+      transform: translateY(110%);
+      transition: transform 1s var(--ease)
+    }
+
+    body.ready h1 .line>span {
+      transform: none
+    }
+
+    body.ready h1 .line:nth-child(2)>span {
+      transition-delay: .12s
+    }
+
+    body.ready h1 .line:nth-child(3)>span {
+      transition-delay: .24s
+    }
+
+    .gradient {
+      background: var(--grad-text);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent
+    }
+
+    .hero p {
+      max-width: 650px;
+      color: var(--muted);
+      font-size: 1.05rem
+    }
+
+    .hero-cta {
+      display: flex;
+      gap: 12px;
+      margin-top: 32px;
+      flex-wrap: wrap
+    }
+
+    .btn {
+      padding: 13px 20px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      cursor: pointer;
+      transition: transform .25s var(--ease), box-shadow .25s, background .25s;
+      font-weight: 600;
+    }
+
+    .btn-primary {
+      background: var(--text);
+      color: var(--bg);
+      border-color: var(--text)
+    }
+
+    .btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 35px rgba(0, 0, 0, .2)
+    }
+
+    .btn-ghost {
+      background: var(--card)
+    }
+
+    .btn-ghost:hover {
+      background: var(--card2)
+    }
+
+    .hero-photo-wrap {
+      display: flex;
+      justify-content: center;
+      position: relative;
+      perspective: 900px
+    }
+
+    .photo {
+      width: min(390px, 80vw);
+      aspect-ratio: 1/1;
+      border-radius: 32px;
+      position: relative;
+      background: linear-gradient(145deg, var(--card2), rgba(139, 92, 246, .1));
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      transform: rotate(2deg);
+      transition: transform .5s var(--ease);
+      will-change: transform;
+    }
+
+    .photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block
+    }
+
+    .photo-fallback {
+      position: absolute;
+      inset: 0;
+      display: none;
+      place-items: center;
+      font-family: "Space Grotesk";
+      font-size: 5rem;
+      font-weight: 700;
+      letter-spacing: -.06em;
+      background: linear-gradient(145deg, rgba(139, 92, 246, .35), rgba(34, 211, 238, .2))
+    }
+
+    .photo.no-img .photo-fallback {
+      display: grid
+    }
+
+    .photo.no-img img {
+      display: none
+    }
+
+    .badge {
+      position: absolute;
+      right: -20px;
+      bottom: 25px;
+      background: var(--bg2);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 16px 18px;
+      box-shadow: var(--shadow);
+      animation: bob 5s ease-in-out infinite;
+    }
+
+    @keyframes bob {
+      50% {
+        transform: translateY(-8px)
+      }
+    }
+
+    .badge strong {
+      display: block;
+      font-size: 1.15rem
+    }
+
+    .badge span {
+      color: var(--muted);
+      font-size: .75rem
+    }
+
+    .scroll-hint {
+      position: absolute;
+      left: 50%;
+      bottom: 22px;
+      transform: translateX(-50%);
+      width: 24px;
+      height: 38px;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      opacity: .7
+    }
+
+    .scroll-hint::after {
+      content: "";
+      position: absolute;
+      left: 50%;
+      top: 7px;
+      width: 3px;
+      height: 7px;
+      margin-left: -1.5px;
+      border-radius: 3px;
+      background: var(--accent2);
+      animation: wheel 1.8s infinite
+    }
+
+    @keyframes wheel {
+      0% {
+        opacity: 0;
+        transform: translateY(0)
+      }
+
+      30% {
+        opacity: 1
+      }
+
+      100% {
+        opacity: 0;
+        transform: translateY(14px)
+      }
+    }
+
+    /* Section heads */
+    .section-head {
+      display: flex;
+      justify-content: space-between;
+      gap: 30px;
+      align-items: end;
+      margin-bottom: 42px
+    }
+
+    .kicker {
+      color: var(--accent2);
+      font-size: .72rem;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      font-weight: 800;
+      margin-bottom: 6px
+    }
+
+    h2 {
+      font-family: "Space Grotesk";
+      font-size: clamp(2rem, 4vw, 3.4rem);
+      letter-spacing: -.06em;
+      line-height: 1
+    }
+
+    .section-head p {
+      max-width: 460px;
+      color: var(--muted);
+      font-size: .95rem
+    }
+
+    /* Cards with spotlight */
+    .card {
+      position: relative;
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      padding: 28px;
+      transition: background .3s, transform .4s var(--ease), border-color .3s, box-shadow .3s;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, .08);
+      overflow: hidden;
+    }
+
+    .card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity .3s;
+      background: radial-gradient(380px circle at var(--mx, 50%) var(--my, 50%), rgba(139, 92, 246, .16), transparent 60%);
+    }
+
+    .card:hover {
+      background: var(--card2);
+      transform: translateY(-4px);
+      border-color: rgba(139, 92, 246, .35)
+    }
+
+    .card:hover::before {
+      opacity: 1
+    }
+
+    .card>* {
+      position: relative
+    }
+
+    .card h3 {
+      font-family: "Space Grotesk";
+      font-size: 1.2rem;
+      margin-bottom: 12px
+    }
+
+    .card p {
+      color: var(--muted);
+      font-size: .93rem
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-top: 18px
+    }
+
+    .stat {
+      padding: 20px;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      background: var(--card);
+      transition: transform .3s var(--ease), border-color .3s
+    }
+
+    .stat:hover {
+      transform: translateY(-3px);
+      border-color: rgba(34, 211, 238, .35)
+    }
+
+    .stat b {
+      font-size: 1.6rem;
+      font-family: "Space Grotesk";
+      display: block;
+      font-variant-numeric: tabular-nums
+    }
+
+    .stat span {
+      font-size: .72rem;
+      color: var(--muted)
+    }
+
+    /* Timeline */
+    .timeline {
+      position: relative;
+      margin-left: 10px
+    }
+
+    .timeline::before {
+      content: "";
+      position: absolute;
+      left: 8px;
+      top: 0;
+      bottom: 0;
+      width: 1px;
+      background: var(--line)
+    }
+
+    .timeline-fill {
+      position: absolute;
+      left: 8px;
+      top: 0;
+      width: 1px;
+      height: 0;
+      background: linear-gradient(var(--accent), var(--accent2));
+      box-shadow: 0 0 12px var(--accent2)
+    }
+
+    .t-item {
+      position: relative;
+      padding: 0 0 35px 45px
+    }
+
+    .t-item::before {
+      content: "";
+      position: absolute;
+      left: 3px;
+      top: 8px;
+      width: 11px;
+      height: 11px;
+      border-radius: 50%;
+      background: var(--bg);
+      border: 2px solid var(--accent2);
+      box-shadow: 0 0 15px rgba(34, 211, 238, .4);
+      transition: transform .4s var(--ease), background .3s
+    }
+
+    .t-item.show::before {
+      transform: scale(1.25);
+      background: var(--accent2)
+    }
+
+    .t-date {
+      font-size: .72rem;
+      letter-spacing: .13em;
+      text-transform: uppercase;
+      color: var(--accent2);
+      font-weight: 700
+    }
+
+    .t-item h3 {
+      font-family: "Space Grotesk";
+      font-size: 1.25rem;
+      margin: 5px 0
+    }
+
+    .t-item em {
+      font-style: normal;
+      color: var(--muted);
+      font-size: .86rem
+    }
+
+    .t-item ul {
+      margin-top: 10px;
+      padding-left: 18px;
+      color: var(--muted);
+      font-size: .9rem
+    }
+
+    .t-item li {
+      margin: 4px 0
+    }
+
+    /* Skills */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px
+    }
+
+    .skill-group h3 {
+      margin-bottom: 20px
+    }
+
+    .skill {
+      margin: 17px 0
+    }
+
+    .skill-top {
+      display: flex;
+      justify-content: space-between;
+      font-size: .82rem;
+      margin-bottom: 7px
+    }
+
+    .skill-top span:last-child {
+      color: var(--muted);
+      font-variant-numeric: tabular-nums
+    }
+
+    .bar {
+      height: 5px;
+      background: var(--track);
+      border-radius: 10px;
+      overflow: hidden
+    }
+
+    .bar i {
+      display: block;
+      height: 100%;
+      width: 0;
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+      border-radius: 10px;
+      transition: width 1.4s var(--ease)
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 14px
+    }
+
+    .tag {
+      padding: 8px 12px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      color: var(--muted);
+      font-size: .78rem;
+      background: var(--card);
+      transition: color .25s, border-color .25s, transform .25s
+    }
+
+    .tag:hover {
+      color: var(--text);
+      border-color: var(--accent2);
+      transform: translateY(-2px)
+    }
+
+    /* Projects */
+    .projects {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px
+    }
+
+    .project {
+      min-height: 240px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between
+    }
+
+    .project-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start
+    }
+
+    .project-num {
+      font-family: "Space Grotesk";
+      font-size: 3rem;
+      color: var(--num);
+      transition: color .3s, transform .4s var(--ease)
+    }
+
+    .project:hover .project-num {
+      color: rgba(34, 211, 238, .5);
+      transform: translateX(-6px)
+    }
+
+    .project h3 {
+      font-size: 1.4rem;
+      margin: 12px 0 8px
+    }
+
+    .project p {
+      color: var(--muted);
+      font-size: .88rem
+    }
+
+    .project-link {
+      color: var(--accent2);
+      font-size: .8rem;
+      margin-top: 20px;
+      display: block
+    }
+
+    /* Carousels */
+    .carousel-wrap {
+      position: relative
+    }
+
+    .carousel-controls {
+      display: flex;
+      justify-content: flex-end;
+      gap: 8px;
+      margin: -2px 0 14px
+    }
+
+    .carousel-btn {
+      width: 42px;
+      height: 42px;
+      border: 1px solid var(--line);
+      background: var(--card);
+      border-radius: 12px;
+      font-size: 1.1rem;
+      cursor: pointer;
+      transition: transform .2s, border-color .2s, color .2s, opacity .2s
+    }
+
+    .carousel-btn:hover:not(:disabled) {
+      transform: translateY(-2px);
+      border-color: var(--accent2);
+      color: var(--accent2)
+    }
+
+    .carousel-btn:disabled {
+      opacity: .3;
+      cursor: default
+    }
+
+    .showcase-grid {
+      display: flex;
+      gap: 18px;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      scroll-behavior: smooth;
+      padding: 4px 2px 18px;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+      overscroll-behavior-x: contain;
+      cursor: grab;
+      -webkit-overflow-scrolling: touch
+    }
+
+    .showcase-grid::-webkit-scrollbar {
+      display: none
+    }
+
+    .showcase-grid.dragging {
+      scroll-snap-type: none;
+      scroll-behavior: auto;
+      cursor: grabbing;
+      user-select: none
+    }
+
+    .showcase-grid.dragging a {
+      pointer-events: none
+    }
+
+    .showcase-grid>.card {
+      flex: 0 0 calc((100% - 36px)/3);
+      min-width: 260px;
+      scroll-snap-align: start
+    }
+
+    .carousel-progress {
+      height: 3px;
+      border-radius: 3px;
+      background: var(--track);
+      margin-top: 4px;
+      overflow: hidden
+    }
+
+    .carousel-progress i {
+      display: block;
+      height: 100%;
+      width: 30%;
+      border-radius: 3px;
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+      transform-origin: left;
+      transition: transform .15s linear
+    }
+
+    .reel-card,
+    .page-card {
+      overflow: hidden;
+      padding: 20px
+    }
+
+    .reel-card h3,
+    .page-card h3 {
+      font-size: 1.02rem;
+      line-height: 1.4
+    }
+
+    .reel-thumb,
+    .page-thumb {
+      border-radius: 17px;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      background: linear-gradient(145deg, var(--card2), rgba(139, 92, 246, .10));
+      position: relative;
+      margin-bottom: 18px
+    }
+
+    .reel-thumb {
+      aspect-ratio: 9/16;
+      background: #000
+    }
+
+    .page-thumb {
+      aspect-ratio: 1/1
+    }
+
+    .reel-thumb img,
+    .page-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform .7s var(--ease)
+    }
+
+    .reel-card:hover .reel-thumb img,
+    .page-card:hover .page-thumb img {
+      transform: scale(1.06)
+    }
+
+    .reel-thumb::after {
+      content: "▶";
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      width: 56px;
+      height: 56px;
+      margin: -28px 0 0 -28px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      font-size: 1rem;
+      padding-left: 3px;
+      color: #fff;
+      background: rgba(0, 0, 0, .45);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(255, 255, 255, .35);
+      opacity: 0;
+      transform: scale(.7);
+      transition: opacity .3s, transform .4s var(--ease);
+    }
+
+    .reel-card:hover .reel-thumb::after {
+      opacity: 1;
+      transform: scale(1)
+    }
+
+    .reel-duration {
+      position: absolute;
+      right: 10px;
+      bottom: 10px;
+      background: rgba(0, 0, 0, .72);
+      color: #fff;
+      padding: 5px 8px;
+      border-radius: 7px;
+      font-size: .68rem;
+      z-index: 1
+    }
+
+    .thumb-fallback {
+      position: absolute;
+      inset: 0;
+      display: none;
+      place-items: center;
+      text-align: center;
+      padding: 20px;
+      color: var(--muted);
+      font-size: .8rem
+    }
+
+    .no-img .thumb-fallback {
+      display: grid
+    }
+
+    .no-img>img {
+      display: none
+    }
+
+    .card-action {
+      display: inline-flex;
+      margin-top: 14px;
+      color: var(--accent2);
+      font-size: .8rem;
+      font-weight: 700;
+      transition: transform .25s
+    }
+
+    .card-action:hover {
+      transform: translateX(4px)
+    }
+
+    /* Certificates */
+    .certificate-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px
+    }
+
+    .certificate-card {
+      display: flex;
+      flex-direction: column;
+      min-height: 245px
+    }
+
+    .certificate-icon {
+      width: 54px;
+      height: 54px;
+      border-radius: 16px;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(135deg, rgba(139, 92, 246, .2), rgba(34, 211, 238, .13));
+      border: 1px solid var(--line);
+      font-size: 1.55rem;
+      margin-bottom: 20px
+    }
+
+    .certificate-card h3 {
+      font-family: "Space Grotesk";
+      font-size: 1.12rem;
+      margin-bottom: 8px
+    }
+
+    .certificate-actions {
+      display: flex;
+      gap: 9px;
+      flex-wrap: wrap;
+      margin-top: auto;
+      padding-top: 20px
+    }
+
+    .certificate-actions a {
+      font-size: .78rem;
+      font-weight: 700;
+      padding: 9px 13px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      transition: transform .2s, border-color .2s
+    }
+
+    .certificate-actions a:first-child {
+      background: var(--text);
+      color: var(--bg);
+      border-color: var(--text)
+    }
+
+    .certificate-actions a:hover {
+      transform: translateY(-2px);
+      border-color: var(--accent2)
+    }
+
+    /* Socials */
+    .social-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px
+    }
+
+    .social-card {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      padding: 22px
+    }
+
+    .social-icon {
+      width: 55px;
+      height: 55px;
+      border-radius: 17px;
+      display: grid;
+      place-items: center;
+      background: var(--card2);
+      border: 1px solid var(--line);
+      font-family: "Space Grotesk";
+      font-weight: 800;
+      font-size: 1rem;
+      flex-shrink: 0;
+      transition: transform .4s var(--ease), background .3s
+    }
+
+    .social-card:hover .social-icon {
+      transform: rotate(-8deg) scale(1.08);
+      background: linear-gradient(135deg, rgba(139, 92, 246, .3), rgba(34, 211, 238, .2))
+    }
+
+    .social-card h3 {
+      font-size: 1rem;
+      margin-bottom: 3px
+    }
+
+    .social-card p {
+      color: var(--muted);
+      font-size: .75rem;
+      word-break: break-all
+    }
+
+    .social-card .social-link {
+      margin-left: auto;
+      color: var(--accent2);
+      font-size: 1rem;
+      transition: transform .3s
+    }
+
+    .social-card:hover .social-link {
+      transform: translate(3px, -3px)
+    }
+
+    /* Contact */
+    .contact {
+      border: 1px solid var(--line);
+      border-radius: 30px;
+      padding: 55px;
+      background: linear-gradient(120deg, rgba(139, 92, 246, .12), rgba(34, 211, 238, .06));
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .contact p {
+      max-width: 600px;
+      margin: 15px auto 25px;
+      color: var(--muted)
+    }
+
+    .contact-info {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      flex-wrap: wrap
+    }
+
+    .contact-info a,
+    .contact-info button {
+      padding: 10px 15px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      font-size: .82rem;
+      background: var(--card);
+      cursor: pointer;
+      transition: transform .25s, border-color .25s, background .25s
+    }
+
+    .contact-info a:hover,
+    .contact-info button:hover {
+      transform: translateY(-3px);
+      border-color: var(--accent2);
+      background: var(--card2)
+    }
+
+    footer {
+      padding: 35px 0;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: .78rem
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap
+    }
+
+    /* Reveal */
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity .8s var(--ease), transform .8s var(--ease);
+      transition-delay: var(--d, 0s)
+    }
+
+    .reveal.show {
+      opacity: 1;
+      transform: none
+    }
+
+    .card.reveal.show {
+      transition: opacity .8s var(--ease) var(--d, 0s), transform .5s var(--ease), background .3s, border-color .3s, box-shadow .3s
+    }
+
+    /* Back to top */
+    #top {
+      position: fixed;
+      right: 20px;
+      bottom: 20px;
+      width: 46px;
+      height: 46px;
+      border-radius: 50%;
+      border: 1px solid var(--line);
+      background: var(--bg2);
+      cursor: pointer;
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(12px);
+      transition: opacity .3s, transform .3s, border-color .3s;
+      z-index: 500;
+      display: grid;
+      place-items: center
+    }
+
+    #top.show {
+      opacity: 1;
+      pointer-events: auto;
+      transform: none
+    }
+
+    #top:hover {
+      border-color: var(--accent2)
+    }
+
+    #top svg {
+      position: absolute;
+      inset: 0;
+      transform: rotate(-90deg)
+    }
+
+    #top circle {
+      fill: none;
+      stroke-width: 2
+    }
+
+    #top .trk {
+      stroke: var(--line)
+    }
+
+    #top .prg {
+      stroke: var(--accent2);
+      stroke-dasharray: 132;
+      stroke-dashoffset: 132
+    }
+
+    /* Toast */
+    #toast {
+      position: fixed;
+      left: 50%;
+      bottom: 28px;
+      transform: translate(-50%, 20px);
+      background: var(--text);
+      color: var(--bg);
+      padding: 11px 18px;
+      border-radius: 999px;
+      font-size: .85rem;
+      font-weight: 600;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity .3s, transform .3s var(--ease);
+      z-index: 12000
+    }
+
+    #toast.show {
+      opacity: 1;
+      transform: translate(-50%, 0)
+    }
+
+    /* Responsive */
+    @media(max-width:1000px) {
+      .nav-links {
+        gap: 16px
+      }
+
+      .nav-links a {
+        font-size: .8rem
+      }
+    }
+
+    @media(max-width:900px) {
+      :root {
+        --nav-h: 68px
+      }
+
+      .nav-links {
+        display: flex;
+        position: fixed;
+        top: var(--nav-h);
+        left: 0;
+        right: 0;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+        background: var(--nav-bg-solid);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        padding: 10px 22px 20px;
+        border-bottom: 1px solid var(--line);
+        max-height: calc(100vh - var(--nav-h));
+        overflow-y: auto;
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(-12px);
+        transition: opacity .3s, transform .4s var(--ease), visibility .3s;
+      }
+
+      .nav.open .nav-links {
+        opacity: 1;
+        visibility: visible;
+        transform: none
+      }
+
+      .nav-links a {
+        font-size: 1.05rem;
+        padding: 14px 4px;
+        border-bottom: 1px solid var(--line)
+      }
+
+      .nav-links a::after {
+        display: none
+      }
+
+      .menu-btn {
+        display: grid
+      }
+
+      .hero-grid {
+        grid-template-columns: 1fr;
+        gap: 45px
+      }
+
+      .hero {
+        padding-top: 110px
+      }
+
+      .hero-photo-wrap {
+        order: -1
+      }
+
+      .photo {
+        width: 260px
+      }
+
+      .badge {
+        right: calc(50% - 170px)
+      }
+
+      .about-grid,
+      .skills-grid,
+      .projects {
+        grid-template-columns: 1fr
+      }
+
+      .section-head {
+        display: block
+      }
+
+      .section-head p {
+        margin-top: 15px
+      }
+
+      .showcase-grid>.card {
+        flex-basis: calc((100% - 18px)/2)
+      }
+
+      .social-grid,
+      .certificate-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr))
+      }
+
+      .scroll-hint {
+        display: none
+      }
+    }
+
+    @media(max-width:600px) {
+      .container {
+        width: min(100% - 28px, 1120px)
+      }
+
+      h1 {
+        font-size: clamp(2.9rem, 15vw, 3.8rem)
+      }
+
+      .stats {
+        grid-template-columns: 1fr
+      }
+
+      section {
+        padding: 72px 0
+      }
+
+      .contact {
+        padding: 36px 20px
+      }
+
+      .showcase-grid>.card {
+        flex-basis: 78%;
+        min-width: 0
+      }
+
+      .social-grid,
+      .certificate-grid {
+        grid-template-columns: 1fr
+      }
+
+      .footer-inner {
+        display: block
+      }
+
+      .footer-inner span {
+        display: block;
+        margin-top: 7px
+      }
+
+      .carousel-controls {
+        display: none
+      }
+
+      .badge {
+        right: calc(50% - 150px);
+        padding: 12px 14px
+      }
+
+      .hero-cta .btn {
+        flex: 1;
+        justify-content: center
+      }
+
+      .card {
+        padding: 22px
+      }
+    }
+
+    @media(max-width:380px) {
+      .badge {
+        display: none
+      }
+    }
+  </style>
+</head>
+
+<body class="is-loading">
+  <a class="skip-link" href="#about">Skip to content</a>
+  <div id="loader" aria-hidden="true">
+    <div class="loader-mark">RAYEN<span>.</span></div>
+  </div>
+  <div id="progress"></div>
+  <div id="cursor"></div>
+
+  <nav class="nav" id="nav" aria-label="Main navigation">
+    <div class="container nav-inner">
+      <a href="#home" class="logo" aria-label="Rayen Lakhal — home">RAYEN<span>.</span></a>
+      <div class="nav-links" id="nav-links">
+        <a href="#about">About</a>
+        <a href="#experience">Experience</a>
+        <a href="#skills">Skills</a>
+        <a href="#certificates">Certificates</a>
+        <a href="#projects">Projects</a>
+        <a href="#reels">Reels</a>
+        <a href="#pages">Pages</a>
+        <a href="#socials">Socials</a>
+        <a href="#contact">Contact</a>
+      </div>
+      <div class="nav-actions">
+        <button class="icon-btn" id="theme" aria-label="Toggle light / dark theme">☼</button>
+        <button class="icon-btn menu-btn" id="menu" aria-label="Open menu" aria-expanded="false"
+          aria-controls="nav-links"><span class="burger"><i></i><i></i><i></i></span></button>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="blob b1"></div>
+      <div class="blob b2"></div>
+      <div class="container hero-grid">
+        <div>
+          <div class="eyebrow reveal"><i class="dot"></i> Available for opportunities</div>
+          <h1>
+            <span class="line"><span>Media.</span></span>
+            <span class="line"><span class="gradient">Digital.</span></span>
+            <span class="line"><span>Impact.</span></span>
+          </h1>
+          <p class="reveal" style="--d:.35s">I'm <strong>Rayen Lakhal</strong> — an IT student, media professional and
+            project leader combining technology, creativity and communication to turn ideas into real projects.</p>
+          <div class="hero-cta reveal" style="--d:.45s">
+            <a class="btn btn-primary" href="#contact" data-magnetic>Let's work together ↗</a>
+            <a class="btn btn-ghost" href="#experience" data-magnetic>Explore my work ↓</a>
+          </div>
+        </div>
+
+        <div class="hero-photo-wrap reveal" style="--d:.2s">
+          <div class="photo" id="photo">
+            <img src="img/me.png" alt="Portrait of Rayen Lakhal" fetchpriority="high">
+            <div class="photo-fallback" aria-hidden="true">RL</div>
+          </div>
+          <div class="badge">
+            <strong>2026–2027</strong>
+            <span>Leo Omega President</span>
+          </div>
+        </div>
+      </div>
+      <div class="scroll-hint" aria-hidden="true"></div>
+    </section>
+
+    <section id="about">
+      <div class="container">
+        <div class="section-head reveal">
+          <div>
+            <div class="kicker">01 — About</div>
+            <h2>More than a job title.</h2>
+          </div>
+          <p>A hybrid profile connecting media, digital communication, leadership and technology.</p>
+        </div>
+        <div class="about-grid">
+          <div class="card reveal">
+            <h3>Profile</h3>
+            <p>Versatile IT student and media professional with experience in photography, videography, social media
+              management, event organization and team leadership. Rapid learner with strong communication, creativity
+              and problem-solving skills.</p>
+          </div>
+          <div class="card reveal" style="--d:.1s">
+            <h3>What I bring</h3>
+            <p>I can contribute to a company through content creation, social media, digital communication, event
+              coverage, project coordination and technical digital projects — while continuously learning and adapting.
+            </p>
+          </div>
+        </div>
+        <div class="stats">
+          <div class="stat reveal"><b><span data-count="2026">2026</span></b><span>Baccalaureate in Informatics</span>
+          </div>
+          <div class="stat reveal" style="--d:.1s"><b>2026–27</b><span>Leo Omega President</span></div>
+          <div class="stat reveal" style="--d:.2s"><b><span data-count="3">3</span>+</b><span>Core professional
+              domains</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="experience">
+      <div class="container">
+        <div class="section-head reveal">
+          <div>
+            <div class="kicker">02 — Experience</div>
+            <h2>Experience that moves.</h2>
+          </div>
+          <p>Leadership, international coordination, media production and real-world event organization.</p>
+        </div>
+
+        <div class="timeline" id="timeline">
+          <div class="timeline-fill" id="timeline-fill"></div>
+
+          <article class="t-item reveal">
+            <div class="t-date">2026 — 2027</div>
+            <h3>President — Leo Omega Youth In Charge</h3>
+            <em>Nabeul, Tunisia</em>
+            <ul>
+              <li>Lead teams, projects and community initiatives.</li>
+              <li>Coordinate partnerships, fundraising activities and club operations.</li>
+              <li>Plan and execute youth, social-impact and communication projects.</li>
+            </ul>
+          </article>
+
+          <article class="t-item reveal">
+            <div class="t-date">2026</div>
+            <h3>Organizer — أيام نابل للخير</h3>
+            <em>NABEUL · Organized by OTEF</em>
+            <ul>
+              <li><strong>Charity Event Management:</strong> Organized "أيام نابل للخير," a 5-day cultural and charitable festival featuring live performances to raise funds for a back-to-school initiative supporting underprivileged students.</li>
+            </ul>
+          </article>
+
+          <article class="t-item reveal">
+            <div class="t-date">2026</div>
+            <h3>Guide — International Cybersecurity Olympiad</h3>
+            <em>Yasmine Hammamet · Organized by ITA</em>
+            <ul>
+              <li>Guided and managed participants from different countries around the world.</li>
+              <li>Coordinated with international participants, organizers and staff.</li>
+              <li>Supported smooth communication and event operations.</li>
+            </ul>
+          </article>
+
+          <article class="t-item reveal">
+            <div class="t-date">2025</div>
+            <h3>Organizer — Scientific camp</h3>
+            <em>KORBA</em>
+            <ul>
+              <li><strong>Scientific Camp Logistics & Leadership:</strong> Co-organized a 3-day scientific camp at the Rajah Korba site, coordinating activities and managing logistics for 40 young participants.</li>
+            </ul>
+          </article>
+
+
+          <article class="t-item reveal">
+            <div class="t-date">2025</div>
+            <h3>Organizer — عيش الحضرة</h3>
+            <em>HOTEL PYRAMIDES · Organized by Leo Youth In Charge</em>
+            <ul>
+              <li><strong>Event Leadership:</strong> End-to-end planning and execution of the "عيش الحضرة" cultural
+                fundraising event in 2025.</li>
+              <li><strong>Vendor & Venue Management:</strong> Selected the traditional <em>Hadhra</em> troupe and
+                secured the event location.</li>
+              <li><strong>Sponsorship Acquisition:</strong> Pitched to and negotiated with sponsors to secure funding
+                and resources.</li>
+              <li><strong>Team Coordination:</strong> Recruited and led an on-site team to ensure smooth event
+                operations.</li>
+              <li><strong>Marketing & Audience Reach:</strong> Spearheaded the promotional campaign using targeted short-form videos and radio broadcast appearances, driving the sale of over 400 tickets.</li>
+            </ul>
+          </article>
+
+          <article class="t-item reveal">
+            <div class="t-date">2025</div>
+            <h3>Media Chef — Leo Youth In Charge</h3>
+            <ul>
+              <li>Manage media activities, social-media content and visual communication.</li>
+              <li>Produce photos, videos, promotional materials and event coverage.</li>
+            </ul>
+          </article>
+
+          <article class="t-item reveal">
+            <div class="t-date">2024</div>
+            <h3>Participant — D-CLICKATHON</h3>
+            <em>MARSA · Organized by Createc</em>
+            <ul>
+              <li>Participated in D-Clickathon 2024, a hackathon focused on promoting digital inclusion and the French
+                language through video game innovation, developing teamwork, creativity, and problem-solving skills..
+              </li>
+            </ul>
+          </article>
+
+          <article class="t-item reveal">
+            <div class="t-date">2023</div>
+            <h3>Organizer — Beez Brainz Code Talent (2nd edition)</h3>
+            <em>NABEUL · Organized by Beez Brainz Academy</em>
+            <ul>
+              <li>In August 2022, I helped organize and successfully execute the 2nd edition of the Beez Brainz Code
+                Talent event, demonstrating my core skills in teamwork, leadership, and event coordination.</li>
+            </ul>
+          </article>
+
+          <article class="t-item reveal">
+            <div class="t-date">2022</div>
+            <h3>Participant — Code In The Dark</h3>
+            <em>TUNISIA · Organized by SUP'COM Junior Entreprise</em>
+            <ul>
+              <li>Participated in Code in the Dark Tunisia 2022, organized by SUP'COM Junior Entreprise, showcasing
+                creativity, front-end development skills, and problem-solving abilities in a timed coding challenge.
+              </li>
+            </ul>
+          </article>
+
+          <article class="t-item reveal">
+            <div class="t-date">2022</div>
+            <h3>Organizer — Beez Brainz Code Talent (1st edition)</h3>
+            <em>NABEUL · Organized by Beez Brainz Academy</em>
+            <ul>
+              <li>In August 2022, I helped organize and successfully execute the 1st edition of the Beez Brainz Code
+                Talent event, demonstrating my core skills in teamwork, leadership, and event coordination.</li>
+            </ul>
+          </article>
+
+          <article class="t-item reveal">
+            <div class="t-date">2019</div>
+            <h3>Participant — LE SOLO</h3>
+            <em>DAR NABEUL · Organized by Dimouzika</em>
+            <ul>
+              <li>In March 2019, I performed as a solo violinist at Dar Nabeul during the "LE SOLO by Dimouzika" event,
+                demonstrating discipline, stage presence, and confidence in front of a live audience.</li>
+            </ul>
+          </article>
+
+          <article class="t-item reveal">
+            <div class="t-date">Project-Based</div>
+            <h3>Photographer &amp; Videographer</h3>
+            <ul>
+              <li>Event photography, videography, Reels, promotional content, visual storytelling and video editing.
+              </li>
+            </ul>
+          </article>
+
+          <article class="t-item reveal">
+            <div class="t-date">Project-Based</div>
+            <h3>Social Media Manager</h3>
+            <ul>
+              <li>Managed pages, content planning, campaigns, captions and digital communication.</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills">
+      <div class="container">
+        <div class="section-head reveal">
+          <div>
+            <div class="kicker">03 — Skills</div>
+            <h2>Creative × Technical.</h2>
+          </div>
+          <p>A combination of creative production, digital communication, leadership and IT.</p>
+        </div>
+
+        <div class="skills-grid">
+          <div class="card skill-group reveal">
+            <h3>Media &amp; Content</h3>
+            <div class="skill">
+              <div class="skill-top"><span>Photography</span><span>90%</span></div>
+              <div class="bar"><i data-width="90%"></i></div>
+            </div>
+            <div class="skill">
+              <div class="skill-top"><span>Videography</span><span>85%</span></div>
+              <div class="bar"><i data-width="85%"></i></div>
+            </div>
+            <div class="skill">
+              <div class="skill-top"><span>Video Editing</span><span>85%</span></div>
+              <div class="bar"><i data-width="85%"></i></div>
+            </div>
+            <div class="skill">
+              <div class="skill-top"><span>Content Creation</span><span>90%</span></div>
+              <div class="bar"><i data-width="90%"></i></div>
+            </div>
+          </div>
+
+          <div class="card skill-group reveal" style="--d:.1s">
+            <h3>Digital &amp; Marketing</h3>
+            <div class="skill">
+              <div class="skill-top"><span>Social Media Management</span><span>90%</span></div>
+              <div class="bar"><i data-width="90%"></i></div>
+            </div>
+            <div class="skill">
+              <div class="skill-top"><span>Digital Communication</span><span>88%</span></div>
+              <div class="bar"><i data-width="88%"></i></div>
+            </div>
+            <div class="skill">
+              <div class="skill-top"><span>Branding &amp; Design</span><span>82%</span></div>
+              <div class="bar"><i data-width="82%"></i></div>
+            </div>
+            <div class="skill">
+              <div class="skill-top"><span>Event Communication</span><span>92%</span></div>
+              <div class="bar"><i data-width="92%"></i></div>
+            </div>
+          </div>
+
+          <div class="card reveal">
+            <h3>IT &amp; Technology</h3>
+            <div class="tags">
+              <span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JavaScript</span><span class="tag">C++</span><span class="tag">C</span><span class="tag">Python</span>
+              <span class="tag">Next.js</span><span class="tag">Web Development</span>
+            </div>
+          </div>
+
+          <div class="card reveal" style="--d:.1s">
+            <h3>Personal Strengths</h3>
+            <div class="tags">
+              <span class="tag">Rapid Learner</span><span class="tag">Adaptable</span><span class="tag">Creative</span>
+              <span class="tag">Leadership</span><span class="tag">Problem Solver</span><span
+                class="tag">Organized</span>
+              <span class="tag">Team Leader</span><span class="tag">Self-Motivated</span><span
+                class="tag">Entrepreneurial</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="certificates">
+      <div class="container">
+        <div class="section-head reveal">
+          <div>
+            <div class="kicker">04 — Certificates</div>
+            <h2>Learning, documented.</h2>
+          </div>
+          <p>Explore my certificates and training achievements. Open a PDF to view it in your browser or download a
+            copy.</p>
+        </div>
+
+        <div class="certificate-grid">
+          <article class="card certificate-card reveal">
+            <div class="certificate-icon" aria-hidden="true">📜</div>
+            <h3>My Certificates</h3>
+            <div class="certificate-actions">
+              <a href="certificates/certif.pdf" target="_blank" rel="noopener">View PDF ↗</a>
+              <a href="certificates/certif.pdf" download>Download ↓</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="reels">
+      <div class="container">
+        <div class="section-head reveal">
+          <div>
+            <div class="kicker">06 — Reels &amp; Video</div>
+            <h2>Short-form. Real impact.</h2>
+          </div>
+          <p>A space to showcase Reels, promotional videos, event edits and visual stories I've created.</p>
+        </div>
+
+        <div class="carousel-wrap reveal">
+          <div class="carousel-controls">
+            <button class="carousel-btn" data-carousel="reels-carousel" data-dir="-1"
+              aria-label="Previous Reel">←</button>
+            <button class="carousel-btn" data-carousel="reels-carousel" data-dir="1" aria-label="Next Reel">→</button>
+          </div>
+          <div class="showcase-grid" id="reels-carousel" tabindex="0" aria-label="Reels carousel">
+
+            <article class="card reel-card">
+              <a href="https://www.instagram.com/reel/DS8Er_pguXR/?utm_source=ig_web_copy_link&vrfl=NTc4MTIwNjQ2YQ=="
+                target="_blank" rel="noopener" aria-label="Watch reel: نظافة نابل مسؤولية الكل">
+                <div class="reel-thumb"><img src="img/reels/3r.jpg" alt="Thumbnail: Nabeul cleanliness campaign"
+                    loading="lazy">
+                  <div class="thumb-fallback">Reel preview</div><span class="reel-duration">00:30</span>
+                </div>
+              </a>
+              <h3 dir="auto">نظافة نابل مسؤولية الكل 💚</h3>
+              <a class="card-action"
+                href="https://www.instagram.com/reel/DS8Er_pguXR/?utm_source=ig_web_copy_link&vrfl=NTc4MTIwNjQ2YQ=="
+                target="_blank" rel="noopener">Watch Reel ↗</a>
+            </article>
+
+            <article class="card reel-card">
+              <a href="https://www.instagram.com/reel/DT3h6pQgVS6/?stkn=MTIxYTYwNGt0cDl4" target="_blank" rel="noopener"
+                aria-label="Watch reel: قفة رمضان 2026">
+                <div class="reel-thumb"><img src="img/reels/1r.jpg" alt="Thumbnail: Ramadan basket 2026" loading="lazy">
+                  <div class="thumb-fallback">Reel preview</div><span class="reel-duration">00:30</span>
+                </div>
+              </a>
+              <h3 dir="auto">قفة رمضان 2026</h3>
+              <a class="card-action" href="https://www.instagram.com/reel/DT3h6pQgVS6/?stkn=MTIxYTYwNGt0cDl4"
+                target="_blank" rel="noopener">Watch Reel ↗</a>
+            </article>
+
+            <article class="card reel-card">
+              <a href="https://www.instagram.com/reel/DT6N0NalKXR/?utm_source=ig_web_copy_link&stkn=MzRlODBiNWFlZA=="
+                target="_blank" rel="noopener" aria-label="Watch reel: Collaboration reel">
+                <div class="reel-thumb"><img src="img/reels/2r.jpg" alt="Thumbnail: Collaboration reel" loading="lazy">
+                  <div class="thumb-fallback">Reel preview</div><span class="reel-duration">00:45</span>
+                </div>
+              </a>
+              <h3>Collaboration reel</h3>
+              <a class="card-action"
+                href="https://www.instagram.com/reel/DT6N0NalKXR/?utm_source=ig_web_copy_link&stkn=MzRlODBiNWFlZA=="
+                target="_blank" rel="noopener">Watch Reel ↗</a>
+            </article>
+
+            <article class="card reel-card">
+              <a href="https://www.instagram.com/p/DT80AFxFI--/" target="_blank" rel="noopener"
+                aria-label="Watch reel: زعما كيفاش تعدا نهار اليوم">
+                <div class="reel-thumb"><img src="img/reels/4r.jpg" alt="Thumbnail: how does the day go" loading="lazy">
+                  <div class="thumb-fallback">Reel preview</div><span class="reel-duration">01:00</span>
+                </div>
+              </a>
+              <h3 dir="auto">زعما كيفاش تعدا نهار اليوم 🤔 🦁</h3>
+              <a class="card-action" href="https://www.instagram.com/p/DT80AFxFI--/" target="_blank"
+                rel="noopener">Watch Reel ↗</a>
+            </article>
+
+            <article class="card reel-card">
+              <a href="https://www.instagram.com/reel/DT-cN75Ei7S/?utm_source=ig_web_copy_link&vrfl=NTc4MTIwNjQ2YQ=="
+                target="_blank" rel="noopener" aria-label="Watch reel: clean-up campaign at Nabeul Corniche">
+                <div class="reel-thumb"><img src="img/reels/5r.jpg"
+                    alt="Thumbnail: clean-up campaign at Nabeul Corniche" loading="lazy">
+                  <div class="thumb-fallback">Reel preview</div><span class="reel-duration">01:00</span>
+                </div>
+              </a>
+              <h3>Clean-up campaign at Nabeul Corniche</h3>
+              <a class="card-action"
+                href="https://www.instagram.com/reel/DT-cN75Ei7S/?utm_source=ig_web_copy_link&vrfl=NTc4MTIwNjQ2YQ=="
+                target="_blank" rel="noopener">Watch Reel ↗</a>
+            </article>
+
+            <article class="card reel-card">
+              <a href="https://www.instagram.com/reel/DUyeaL5ES8D/?utm_source=ig_web_copy_link&obrf=NTc4MTIwNjQ2YQ=="
+                target="_blank" rel="noopener" aria-label="Watch reel: عيش الحضرة micro trottoir">
+                <div class="reel-thumb"><img src="img/reels/6r.jpg" alt="Thumbnail: Aysh El Hadhra micro-trottoir"
+                    loading="lazy">
+                  <div class="thumb-fallback">Reel preview</div><span class="reel-duration">01:00</span>
+                </div>
+              </a>
+              <h3 dir="auto">عيش الحضرة — micro trottoir</h3>
+              <a class="card-action"
+                href="https://www.instagram.com/reel/DUyeaL5ES8D/?utm_source=ig_web_copy_link&obrf=NTc4MTIwNjQ2YQ=="
+                target="_blank" rel="noopener">Watch Reel ↗</a>
+            </article>
+
+            <article class="card reel-card">
+              <a href="https://www.facebook.com/share/v/1FKmcXMroP/" target="_blank" rel="noopener"
+                aria-label="Watch reel: Hydroponics information">
+                <div class="reel-thumb"><img src="img/reels/7r.jpg" alt="Thumbnail: Hydroponics information"
+                    loading="lazy">
+                  <div class="thumb-fallback">Reel preview</div><span class="reel-duration">01:00</span>
+                </div>
+              </a>
+              <h3>Hydroponics information</h3>
+              <a class="card-action" href="https://www.facebook.com/share/v/1FKmcXMroP/" target="_blank"
+                rel="noopener">Watch Reel ↗</a>
+            </article>
+
+            <article class="card reel-card">
+              <a href="https://www.instagram.com/reel/Da-zZskMMV6/?utm_source=ig_web_copy_link&dlrf=NTc4MTIwNjQ2YQ=="
+                target="_blank" rel="noopener" aria-label="Watch reel: Nelson Mandela International Day">
+                <div class="reel-thumb"><img src="img/reels/8r.jpg" alt="Thumbnail: Nelson Mandela International Day"
+                    loading="lazy">
+                  <div class="thumb-fallback">Reel preview</div><span class="reel-duration">01:00</span>
+                </div>
+              </a>
+              <h3>Nelson Mandela International Day</h3>
+              <a class="card-action"
+                href="https://www.instagram.com/reel/Da-zZskMMV6/?utm_source=ig_web_copy_link&dlrf=NTc4MTIwNjQ2YQ=="
+                target="_blank" rel="noopener">Watch Reel ↗</a>
+            </article>
+
+            <article class="card reel-card">
+              <a href="https://www.instagram.com/reel/DbNePPOsP1n/?utm_source=ig_web_copy_link&cplk=NTc4MTIwNjQ2YQ=="
+                target="_blank" rel="noopener" aria-label="Watch reel: Journée d'orientation">
+                <div class="reel-thumb"><img src="img/reels/9r.jpg" alt="Thumbnail: Journée d'orientation"
+                    loading="lazy">
+                  <div class="thumb-fallback">Reel preview</div><span class="reel-duration">01:00</span>
+                </div>
+              </a>
+              <h3>Journée d'orientation</h3>
+              <a class="card-action"
+                href="https://www.instagram.com/reel/DbNePPOsP1n/?utm_source=ig_web_copy_link&cplk=NTc4MTIwNjQ2YQ=="
+                target="_blank" rel="noopener">Watch Reel ↗</a>
+            </article>
+
+            <article class="card reel-card">
+              <a href="https://www.instagram.com/reel/DbtP3qFsrlW/?utm_source=ig_web_copy_link&dlrf=NTc4MTIwNjQ2YQ=="
+                target="_blank" rel="noopener" aria-label="Watch reel: Short film to apply to my club">
+                <div class="reel-thumb"><img src="img/reels/10r.jpg" alt="Thumbnail: short film to apply to my club"
+                    loading="lazy">
+                  <div class="thumb-fallback">Reel preview</div><span class="reel-duration">01:00</span>
+                </div>
+              </a>
+              <h3>Short film to apply to my club</h3>
+              <a class="card-action"
+                href="https://www.instagram.com/reel/DbtP3qFsrlW/?utm_source=ig_web_copy_link&dlrf=NTc4MTIwNjQ2YQ=="
+                target="_blank" rel="noopener">Watch Reel ↗</a>
+            </article>
+
+            <article class="card reel-card">
+              <a href="https://www.instagram.com/reel/De7wmFjB_CP/?utm_source=ig_web_copy_link&rpxt=NTc4MTIwNjQ2YQ=="
+                target="_blank" rel="noopener" aria-label="Watch reel: ADHD awareness month">
+                <div class="reel-thumb"><img src="img/reels/11r.jpg" alt="Thumbnail: ADHD awareness month"
+                    loading="lazy">
+                  <div class="thumb-fallback">Reel preview</div><span class="reel-duration">01:00</span>
+                </div>
+              </a>
+              <h3>ADHD awareness month</h3>
+              <a class="card-action"
+                href="https://www.instagram.com/reel/De7wmFjB_CP/?utm_source=ig_web_copy_link&rpxt=NTc4MTIwNjQ2YQ=="
+                target="_blank" rel="noopener">Watch Reel ↗</a>
+            </article>
+
+            <article class="card reel-card">
+              <a href="https://www.instagram.com/reel/Dfmx8MvPLLP/?utm_source=ig_web_copy_link&vrfl=MzRlODBiNWFlZA==&srtk=MzRlODBiNWFlZA=="
+                target="_blank" rel="noopener" aria-label="Watch reel: ADHD awareness month">
+                <div class="reel-thumb"><img src="img/reels/12r.jpg" alt="Thumbnail: ADHD awareness month"
+                    loading="lazy">
+                  <div class="thumb-fallback">Reel preview</div><span class="reel-duration">01:00</span>
+                </div>
+              </a>
+              <h3>ADHD awareness month</h3>
+              <a class="card-action"
+                href="https://www.instagram.com/reel/Dfmx8MvPLLP/?utm_source=ig_web_copy_link&vrfl=MzRlODBiNWFlZA==&srtk=MzRlODBiNWFlZA=="
+                target="_blank" rel="noopener">Watch Reel ↗</a>
+            </article>
+
+          </div>
+          <div class="carousel-progress" aria-hidden="true"><i data-progress="reels-carousel"></i></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="pages">
+      <div class="container">
+        <div class="section-head reveal">
+          <div>
+            <div class="kicker">07 — Pages &amp; Brands</div>
+            <h2>Pages I've worked on.</h2>
+          </div>
+          <p>Show the companies, organizations, brands and social pages where I've contributed to content or digital
+            communication.</p>
+        </div>
+
+        <div class="carousel-wrap reveal">
+          <div class="carousel-controls">
+            <button class="carousel-btn" data-carousel="pages-carousel" data-dir="-1"
+              aria-label="Previous page">←</button>
+            <button class="carousel-btn" data-carousel="pages-carousel" data-dir="1" aria-label="Next page">→</button>
+          </div>
+          <div class="showcase-grid" id="pages-carousel" tabindex="0" aria-label="Pages carousel">
+
+            <article class="card page-card">
+              <a href="https://www.instagram.com/leo.omega.youth.in.charge/" target="_blank" rel="noopener"
+                aria-label="View Leo Omega Youth In Charge">
+                <div class="page-thumb"><img src="img/pages/p1.png" alt="Leo Omega Youth In Charge page" loading="lazy">
+                  <div class="thumb-fallback">Leo Omega</div>
+                </div>
+              </a>
+              <h3>Leo Omega Youth In Charge</h3>
+              <a class="card-action" href="https://www.instagram.com/leo.omega.youth.in.charge/" target="_blank"
+                rel="noopener">View Page ↗</a>
+            </article>
+
+            <article class="card page-card">
+              <a href="https://www.instagram.com/leo_alpha_teens_in_charge/" target="_blank" rel="noopener"
+                aria-label="View Leo Alpha Teens In Charge">
+                <div class="page-thumb"><img src="img/pages/p2.png" alt="Leo Alpha Teens In Charge page" loading="lazy">
+                  <div class="thumb-fallback">Leo Alpha</div>
+                </div>
+              </a>
+              <h3>Leo Alpha Teens In Charge</h3>
+              <a class="card-action" href="https://www.instagram.com/leo_alpha_teens_in_charge/" target="_blank"
+                rel="noopener">View Page ↗</a>
+            </article>
+
+            <article class="card page-card">
+              <a href="https://www.facebook.com/profile.php?id=61587075802923" target="_blank" rel="noopener"
+                aria-label="View GreenWave Hydroponics">
+                <div class="page-thumb"><img src="img/pages/p3.png" alt="GreenWave Hydroponics page" loading="lazy">
+                  <div class="thumb-fallback">GreenWave</div>
+                </div>
+              </a>
+              <h3>GreenWave Hydroponics</h3>
+              <a class="card-action" href="https://www.facebook.com/profile.php?id=61587075802923" target="_blank"
+                rel="noopener">View Page ↗</a>
+            </article>
+
+            <article class="card page-card">
+              <a href="https://www.facebook.com/OptiCodeAcademy" target="_blank" rel="noopener"
+                aria-label="View OptiCode Academy">
+                <div class="page-thumb"><img src="img/pages/p4.png" alt="OptiCode Academy page" loading="lazy">
+                  <div class="thumb-fallback">OptiCode</div>
+                </div>
+              </a>
+              <h3>OptiCode Academy</h3>
+              <a class="card-action" href="https://www.facebook.com/OptiCodeAcademy" target="_blank" rel="noopener">View
+                Page ↗</a>
+            </article>
+
+            <article class="card page-card">
+              <a href="https://www.facebook.com/GadZY.org.Official" target="_blank" rel="noopener"
+                aria-label="View GadZY">
+                <div class="page-thumb"><img src="img/pages/p5.png" alt="GadZY page" loading="lazy">
+                  <div class="thumb-fallback">GadZY</div>
+                </div>
+              </a>
+              <h3>GadZY</h3>
+              <a class="card-action" href="https://www.facebook.com/GadZY.org.Official" target="_blank"
+                rel="noopener">View Page ↗</a>
+            </article>
+
+          </div>
+          <div class="carousel-progress" aria-hidden="true"><i data-progress="pages-carousel"></i></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="socials">
+      <div class="container">
+        <div class="section-head reveal">
+          <div>
+            <div class="kicker">08 — Social Media</div>
+            <h2>Find me online.</h2>
+          </div>
+          <p>My social profiles and development work</p>
+        </div>
+
+        <div class="social-grid">
+          <a class="card social-card reveal" href="https://www.facebook.com/mohammed.rayen.lakhal/" target="_blank"
+            rel="noopener">
+            <div class="social-icon">f</div>
+            <div>
+              <h3>Facebook</h3>
+              <p>facebook.com/mohammed.rayen.lakhal</p>
+            </div>
+            <span class="social-link">↗</span>
+          </a>
+
+          <a class="card social-card reveal" style="--d:.1s" href="https://www.instagram.com/rayen.lakhal/"
+            target="_blank" rel="noopener">
+            <div class="social-icon">◎</div>
+            <div>
+              <h3>Instagram</h3>
+              <p>instagram.com/rayen.lakhal</p>
+            </div>
+            <span class="social-link">↗</span>
+          </a>
+
+          <!-- TODO: replace YOUR_USERNAME with your real GitHub username -->
+          <a class="card social-card reveal" style="--d:.2s" href="https://github.com/rayenlakhal" target="_blank"
+            rel="noopener">
+            <div class="social-icon">GH</div>
+            <div>
+              <h3>GitHub</h3>
+              <p>github.com/YOUR_USERNAME</p>
+            </div>
+            <span class="social-link">↗</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="container">
+        <div class="contact reveal">
+          <div class="kicker">09 — Contact</div>
+          <h2>Let's create something.</h2>
+          <p>I'm currently open to part-time opportunities in media, digital communication, digital marketing, content
+            creation and creative project management.</p>
+          <div class="contact-info">
+            <a href="mailto:rayenlakhal789@gmail.com">rayenlakhal789@gmail.com ↗</a>
+            <button type="button" id="copy-email" data-email="rayenlakhal789@gmail.com">Copy email ⧉</button>
+            <a href="tel:+21627618100">+216 27 618 100</a>
+            <a href="#home">Nabeul, Tunisia</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-inner">
+      <span>© <span id="year">2026</span> Rayen Lakhal. All rights reserved.</span>
+      <span>Media · Digital · Technology · Leadership</span>
+    </div>
+  </footer>
+
+  <button id="top" aria-label="Back to top">
+    <svg width="46" height="46" viewBox="0 0 46 46" aria-hidden="true">
+      <circle class="trk" cx="23" cy="23" r="21" />
+      <circle class="prg" cx="23" cy="23" r="21" />
+    </svg>
+    <span aria-hidden="true">↑</span>
+  </button>
+  <div id="toast" role="status" aria-live="polite"></div>
+
+  <script>
+    (function () {
+      'use strict';
+      var $ = function (s, c) { return (c || document).querySelector(s) };
+      var $$ = function (s, c) { return Array.prototype.slice.call((c || document).querySelectorAll(s)) };
+      var reduce = false; // animations always on
+      var finePointer = matchMedia('(hover:hover) and (pointer:fine)').matches;
+
+      var nav = $('#nav'), topBtn = $('#top'), progress = $('#progress'), cursor = $('#cursor');
+      var topRing = $('#top .prg');
+      $('#year').textContent = new Date().getFullYear();
+
+      /* ---------- Loader / intro ---------- */
+      function start() {
+        var l = $('#loader');
+        l.classList.add('hide');
+        document.body.classList.remove('is-loading');
+        document.body.classList.add('ready');
+      }
+      if (document.readyState === 'complete') setTimeout(start, 250);
+      else window.addEventListener('load', function () { setTimeout(start, 250) });
+      setTimeout(start, 2500); // safety net if an image stalls
+
+      /* ---------- Image fallbacks ---------- */
+      $$('img').forEach(function (img) {
+        function fail() {
+          var p = img.closest('.photo,.reel-thumb,.page-thumb');
+          if (p) p.classList.add('no-img');
+        }
+        img.addEventListener('error', fail);
+        if (img.complete && img.naturalWidth === 0) fail();
+      });
+
+      /* ---------- Theme ---------- */
+      var themeBtn = $('#theme'), root = document.documentElement;
+      function syncTheme() {
+        var light = root.classList.contains('light');
+        themeBtn.textContent = light ? '☾' : '☼';
+        var m = $('meta[name="theme-color"]'); if (m) m.setAttribute('content', light ? '#f4f5f8' : '#08090d');
+      }
+      syncTheme();
+      themeBtn.addEventListener('click', function () {
+        root.classList.toggle('light');
+        try { localStorage.setItem('theme', root.classList.contains('light') ? 'light' : 'dark') } catch (e) { }
+        syncTheme();
+      });
+
+      /* ---------- Mobile menu ---------- */
+      var menu = $('#menu');
+      function setMenu(open) {
+        nav.classList.toggle('open', open);
+        menu.setAttribute('aria-expanded', open);
+        menu.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+      }
+      menu.addEventListener('click', function (e) { e.stopPropagation(); setMenu(!nav.classList.contains('open')) });
+      document.addEventListener('click', function (e) { if (!nav.contains(e.target)) setMenu(false) });
+      document.addEventListener('keydown', function (e) { if (e.key === 'Escape') setMenu(false) });
+      matchMedia('(min-width:901px)').addEventListener('change', function () { setMenu(false) });
+
+      /* ---------- Smooth in-page links ---------- */
+      $$('a[href^="#"]').forEach(function (a) {
+        a.addEventListener('click', function (e) {
+          var id = a.getAttribute('href');
+          if (id.length < 2) return;
+          var t = $(id);
+          if (t) {
+            e.preventDefault(); setMenu(false);
+            t.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'start' });
+            history.replaceState(null, '', id);
+          }
+        });
+      });
+
+      /* ---------- Scroll handling (rAF-throttled) ---------- */
+      var ticking = false, lastY = 0, timeline = $('#timeline'), tFill = $('#timeline-fill');
+      function onScroll() {
+        var y = window.scrollY || window.pageYOffset;
+        var h = document.documentElement.scrollHeight - innerHeight;
+        var p = h > 0 ? Math.min(1, y / h) : 0;
+        progress.style.transform = 'scaleX(' + p + ')';
+        nav.classList.toggle('scrolled', y > 20);
+        // hide nav on scroll down, show on scroll up (not while menu open)
+        if (!nav.classList.contains('open')) {
+          nav.classList.toggle('hidden', y > lastY + 4 && y > 400);
+          if (y < lastY - 4 || y < 400) nav.classList.remove('hidden');
+        }
+        lastY = y;
+        topBtn.classList.toggle('show', y > 500);
+        topRing.style.strokeDashoffset = 132 - 132 * p;
+        // timeline fill
+        if (timeline) {
+          var r = timeline.getBoundingClientRect();
+          var f = (innerHeight * .6 - r.top) / r.height;
+          tFill.style.height = Math.max(0, Math.min(1, f)) * 100 + '%';
+        }
+        ticking = false;
+      }
+      window.addEventListener('scroll', function () { if (!ticking) { ticking = true; requestAnimationFrame(onScroll) } }, { passive: true });
+      window.addEventListener('resize', onScroll);
+      onScroll();
+      topBtn.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: reduce ? 'auto' : 'smooth' }) });
+
+      /* ---------- Scroll-spy ---------- */
+      var links = $$('.nav-links a');
+      var spy = new IntersectionObserver(function (entries) {
+        entries.forEach(function (en) {
+          if (en.isIntersecting) {
+            links.forEach(function (l) { l.classList.toggle('active', l.getAttribute('href') === '#' + en.target.id) });
+          }
+        });
+      }, { rootMargin: '-45% 0px -50% 0px' });
+      $$('main section[id]').forEach(function (s) { spy.observe(s) });
+
+      /* ---------- Reveal, skill bars, counters ---------- */
+      function countUp(el) {
+        var end = parseInt(el.dataset.count, 10), dur = 1400, t0 = null;
+        if (reduce || isNaN(end)) return;
+        var startVal = el.dataset.count.length === 4 ? Math.max(0, end - 60) : 0;
+        function step(ts) {
+          if (!t0) t0 = ts;
+          var k = Math.min(1, (ts - t0) / dur), e = 1 - Math.pow(1 - k, 3);
+          el.textContent = Math.round(startVal + (end - startVal) * e);
+          if (k < 1) requestAnimationFrame(step);
+        }
+        requestAnimationFrame(step);
+      }
+      // stagger siblings that don't already have a custom delay
+      $$('.certificate-grid,.projects,.social-grid,.stats,.about-grid,.skills-grid').forEach(function (g) {
+        $$('.reveal', g).forEach(function (el, i) { if (!el.style.getPropertyValue('--d')) el.style.setProperty('--d', (i * 0.08) + 's') });
+      });
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (en) {
+          if (!en.isIntersecting) return;
+          var el = en.target;
+          el.classList.add('show');
+          $$('.bar i', el).forEach(function (b) { b.style.width = b.dataset.width });
+          $$('[data-count]', el).forEach(countUp);
+          io.unobserve(el);
+        });
+      }, { threshold: .12, rootMargin: '0px 0px -5% 0px' });
+      $$('.reveal').forEach(function (el) { io.observe(el) });
+
+      /* ---------- Card spotlight ---------- */
+      if (finePointer) {
+        $$('.card').forEach(function (c) {
+          c.addEventListener('pointermove', function (e) {
+            var r = c.getBoundingClientRect();
+            c.style.setProperty('--mx', (e.clientX - r.left) + 'px');
+            c.style.setProperty('--my', (e.clientY - r.top) + 'px');
+          });
+        });
+      }
+
+      /* ---------- Custom cursor (smoothed) ---------- */
+      if (finePointer && !reduce) {
+        var cx = 0, cy = 0, tx = 0, ty = 0, run = false;
+        document.addEventListener('pointermove', function (e) {
+          tx = e.clientX; ty = e.clientY; cursor.classList.add('on');
+          if (!run) { run = true; requestAnimationFrame(loop) }
+        });
+        document.addEventListener('mouseleave', function () { cursor.classList.remove('on') });
+        function loop() {
+          cx += (tx - cx) * .22; cy += (ty - cy) * .22;
+          cursor.style.transform = 'translate(' + (cx - cursor.offsetWidth / 2) + 'px,' + (cy - cursor.offsetHeight / 2) + 'px)';
+          if (Math.abs(tx - cx) > .1 || Math.abs(ty - cy) > .1) requestAnimationFrame(loop); else run = false;
+        }
+        $$('a,button,.card').forEach(function (el) {
+          el.addEventListener('mouseenter', function () { cursor.classList.add('big') });
+          el.addEventListener('mouseleave', function () { cursor.classList.remove('big') });
+        });
+      }
+
+      /* ---------- Hero photo tilt + magnetic buttons ---------- */
+      var photo = $('#photo');
+      if (photo && finePointer && !reduce) {
+        var wrap = photo.parentElement;
+        wrap.addEventListener('pointermove', function (e) {
+          var r = wrap.getBoundingClientRect();
+          var x = (e.clientX - r.left) / r.width - .5, y = (e.clientY - r.top) / r.height - .5;
+          photo.style.transform = 'rotateY(' + (x * 12) + 'deg) rotateX(' + (-y * 12) + 'deg) scale(1.03)';
+        });
+        wrap.addEventListener('pointerleave', function () { photo.style.transform = '' });
+      }
+      if (finePointer && !reduce) {
+        $$('[data-magnetic]').forEach(function (b) {
+          b.addEventListener('pointermove', function (e) {
+            var r = b.getBoundingClientRect();
+            b.style.transform = 'translate(' + ((e.clientX - r.left - r.width / 2) * .2) + 'px,' + ((e.clientY - r.top - r.height / 2) * .3 - 3) + 'px)';
+          });
+          b.addEventListener('pointerleave', function () { b.style.transform = '' });
+        });
+      }
+
+      /* ---------- Carousels ---------- */
+      function setupCarousel(track) {
+        var wrap = track.closest('.carousel-wrap');
+        var prev = $('[data-carousel="' + track.id + '"][data-dir="-1"]', wrap);
+        var next = $('[data-carousel="' + track.id + '"][data-dir="1"]', wrap);
+        var bar = $('[data-progress="' + track.id + '"]', wrap);
+        function step() {
+          var c = $('.card', track);
+          return c ? c.getBoundingClientRect().width + 18 : track.clientWidth;
+        }
+        function update() {
+          var max = track.scrollWidth - track.clientWidth;
+          var p = max > 0 ? track.scrollLeft / max : 0;
+          var visible = track.clientWidth / track.scrollWidth;
+          if (bar) {
+            bar.style.width = Math.max(12, visible * 100) + '%';
+            bar.style.transform = 'translateX(' + (p * ((1 / visible - 1) * 100)) + '%)';
+          }
+          if (prev) prev.disabled = track.scrollLeft <= 2;
+          if (next) next.disabled = track.scrollLeft >= max - 2;
+        }
+        [prev, next].forEach(function (b) {
+          if (!b) return;
+          b.addEventListener('click', function () {
+            track.scrollBy({ left: step() * Number(b.dataset.dir), behavior: reduce ? 'auto' : 'smooth' });
+          });
+        });
+        track.addEventListener('scroll', function () { requestAnimationFrame(update) }, { passive: true });
+        window.addEventListener('resize', update);
+        track.addEventListener('keydown', function (e) {
+          if (e.key === 'ArrowRight') { e.preventDefault(); track.scrollBy({ left: step(), behavior: 'smooth' }) }
+          if (e.key === 'ArrowLeft') { e.preventDefault(); track.scrollBy({ left: -step(), behavior: 'smooth' }) }
+        });
+        // Mouse drag-to-scroll (touch already scrolls natively)
+        var down = false, sx = 0, sl = 0, moved = false;
+        track.addEventListener('pointerdown', function (e) {
+          if (e.pointerType !== 'mouse') return;
+          down = true; moved = false; sx = e.clientX; sl = track.scrollLeft;
+        });
+        window.addEventListener('pointermove', function (e) {
+          if (!down) return;
+          var dx = e.clientX - sx;
+          if (Math.abs(dx) > 5 && !moved) { moved = true; track.classList.add('dragging') }
+          if (moved) track.scrollLeft = sl - dx;
+        });
+        window.addEventListener('pointerup', function () {
+          if (!down) return; down = false;
+          if (moved) {
+            track.classList.remove('dragging');
+            var s = step(), target = Math.round(track.scrollLeft / s) * s;
+            track.scrollTo({ left: target, behavior: 'smooth' });
+          }
+        });
+        // prevent native image drag from fighting the carousel
+        $$('img', track).forEach(function (i) { i.setAttribute('draggable', 'false') });
+        setTimeout(update, 100); update();
+      }
+      $$('.showcase-grid').forEach(setupCarousel);
+
+      /* ---------- Copy email ---------- */
+      var toast = $('#toast'), tt;
+      function showToast(msg) {
+        toast.textContent = msg; toast.classList.add('show');
+        clearTimeout(tt); tt = setTimeout(function () { toast.classList.remove('show') }, 2000);
+      }
+      $('#copy-email').addEventListener('click', function () {
+        var mail = this.dataset.email;
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(mail).then(function () { showToast('Email copied ✓') }, function () { showToast(mail) });
+        } else {
+          var t = document.createElement('textarea'); t.value = mail; document.body.appendChild(t); t.select();
+          try { document.execCommand('copy'); showToast('Email copied ✓') } catch (e) { showToast(mail) }
+          document.body.removeChild(t);
+        }
+      });
+    })();
+  </script>
+</body>
+
+</html>
